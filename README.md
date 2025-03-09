@@ -25,13 +25,13 @@ Below is a comprehensive documentation template for the MStack Java framework, d
 
 ## Introduction
 
-MStack is a powerful Java framework that enables developers to create applications with a single codebase that can seamlessly operate as a monolithic application or a distributed microservices architecture. This flexibility eliminates the need for code rewrites when scaling from a simple prototype to a production-grade distributed system.
+MStack is a powerful Java framework designed for building applications using a microservices approach from the ground up. It allows developers to create a microservices-ready codebase that can run as a single process (monolith) during early development for rapid prototyping, then seamlessly transition to a fully distributed microservices architecture as the application grows—all without changing the code. This approach accelerates development while ensuring scalability and resilience.
 
 ### Why MStack?
-MStack provides a highly customizable and feature-rich foundation for building applications. Start with a monolithic architecture for simplicity and speed, then scale to microservices as your application grows—all without changing your implementation code. This adaptability is achieved through modular dependencies and Maven profiles, allowing you to focus on business logic while MStack handles the underlying infrastructure.
+MStack provides a customizable, feature-rich foundation for microservices development. It enables rapid iteration by running your microservices-designed application as a monolith initially, then scales effortlessly to a distributed system when needed. The framework abstracts complexity, letting you focus on business logic while delivering production-ready capabilities.
 
 ### Key Features
-- **Dynamic Deployment**: Toggle between monolith and microservices deployments using Maven profiles, with no code modifications.
+- **Unified Development**: Write microservices-ready code once and run it as a monolith for rapid prototyping, then deploy as microservices as needed.
 - **Service Orchestration**: Includes service discovery, load balancing, and routing for effortless scaling.
 - **Versatile Connectivity**: Supports RSocket, HTTP, and WebSocket for real-time streaming, REST APIs, and more.
 - **Persistent Powerhouse**: Integrated persistence layer with optimized query generation, schema evolution, and transaction management.
@@ -39,9 +39,9 @@ MStack provides a highly customizable and feature-rich foundation for building a
 - **Fault Tolerance**: Distributes critical functions across nodes for high availability and uninterrupted operation.
 
 ### Use Cases
-- Rapid prototyping with a monolithic setup, scalable to microservices.
-- Real-time, event-driven applications requiring robust communication.
-- Resilient, distributed systems with minimal configuration overhead.
+- Rapid prototyping of microservices apps in a monolithic setup.
+- Event-driven systems requiring robust communication.
+- Scalable, resilient applications that evolve from prototype to production.
 
 ---
 
@@ -60,15 +60,13 @@ MStack provides a highly customizable and feature-rich foundation for building a
    ```
 
 2. **Add MStack Dependencies**:
-   - For a **monolith**, use `mstack-core` and required implementations.
-   - For **microservices**, use `mstack` and additional dependencies.
 
    Example `pom.xml` snippet for a monolithic setup:
    ```xml
    <dependencies>
        <dependency>
            <groupId>com.mstack</groupId>
-           <artifactId>mstack-core</artifactId>
+           <artifactId>mstack</artifactId>
            <version>1.0.0</version>
        </dependency>
        <dependency>
@@ -89,36 +87,11 @@ MStack provides a highly customizable and feature-rich foundation for building a
    </dependencies>
    ```
 
-3. **Set Up Maven Profiles**:
-   Define profiles in `pom.xml` to switch between architectures:
-   ```xml
-   <profiles>
-       <profile>
-           <id>monolith</id>
-           <dependencies>
-               <dependency>
-                   <groupId>com.mstack</groupId>
-                   <artifactId>mstack-core</artifactId>
-                   <version>1.0.0</version>
-               </dependency>
-           </dependencies>
-       </profile>
-       <profile>
-           <id>microservices</id>
-           <dependencies>
-               <dependency>
-                   <groupId>com.mstack</groupId>
-                   <artifactId>mstack</artifactId>
-                   <version>1.0.0</version>
-               </dependency>
-           </dependencies>
-       </profile>
-   </profiles>
-   ```
 
-4. **Build the Project**:
-   - Monolith: `mvn clean install -P monolith`
-   - Microservices: `mvn clean install -P microservices`
+3. **Build the Project**:
+      ```bash
+      mvn clean install
+      ```
 
 ---
 
@@ -137,19 +110,15 @@ The transition between these architectures is managed by swapping dependencies (
 
 MStack is modular, with libraries that can be mixed and matched based on your needs. Below is an overview of each component:
 
-### `mstack-core`
-- **Purpose**: Core library for monolithic applications, providing interfaces for:
+
+### `mstack`
+- **Purpose**: Core library for microservice applications, providing interfaces for:
   - Logging
   - Data persistence
   - Transport
   - Web servers
   - Authentication
-  - Inter-service communication
   - Monitoring and tracing
-- **Usage**: Foundation for all MStack applications.
-
-### `mstack`
-- **Purpose**: Extends `mstack-core` with microservices features:
   - Complex routing
   - Load balancing
   - Distributed service discovery
@@ -184,15 +153,6 @@ MStack is modular, with libraries that can be mixed and matched based on your ne
 
 ### `complex-router`
 - **Purpose**: Advanced routing for microservices, enhancing scalability and availability.
-
----
-
-## Configuration
-
-### Maven Profiles
-Switch between architectures by activating profiles:
-- **Monolith**: `-P monolith`
-- **Microservices**: `-P microservices`
 
 ---
 
