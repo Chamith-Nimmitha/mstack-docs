@@ -48,7 +48,7 @@ MStack provides a highly customizable and feature-rich foundation for building a
 ## Getting Started
 
 ### Prerequisites
-- **Java**: Version 11 or higher
+- **Java**: Version 8
 - **Maven**: Version 3.6 or higher
 - **Database**: A supported database (e.g., MySQL, PostgreSQL) for persistence
 
@@ -194,23 +194,11 @@ Switch between architectures by activating profiles:
 - **Monolith**: `-P monolith`
 - **Microservices**: `-P microservices`
 
-### Configuration Files
-Configure components using properties or YAML files. Example for a MySQL database:
-```properties
-datajpa.datasource.url=jdbc:mysql://localhost:3306/mydb
-datajpa.datasource.username=user
-datajpa.datasource.password=pass
-```
-
-For microservices, configure service discovery:
-```properties
-service-discovery.type=scalecube
-service-discovery.seeds=192.168.1.100:4801
-```
-
 ---
 
 ## Usage Examples
+
+You can find complete examples here. [Examples repo](https://github.com/Chamith-Nimmitha/mstack-example.git)
 
 ### Building a Simple CRUD Service
 1. **Define a Service Interface**:
